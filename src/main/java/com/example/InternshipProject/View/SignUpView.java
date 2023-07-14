@@ -11,30 +11,31 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
+@Component
 @Route(value = "/signup")
+
 @PageTitle("Sign up")
-
-public class SignUp extends AppLayout {
-@Autowired
-    UserController controller;
-
-    public SignUp() {
+public class SignUpView extends AppLayout {
+    @Autowired
+    UserController userController;
+    public SignUpView() {
 
         VerticalLayout textlayout = new VerticalLayout();
         HorizontalLayout buttonlayout = new HorizontalLayout();
 
         TextField usernametext = new TextField("Username");
         TextField passwordtext = new TextField(("Password"));
-        Button signup = new Button("Sign up", event -> controller.registerUser(usernametext.getValue(),passwordtext.getValue()));
+        Button signup = new Button("Sign up", event -> userController.registerUser(usernametext.getValue(), passwordtext.getValue()));
         Button back = new Button("Back");
         buttonlayout.add(signup, back);
         textlayout.setHorizontalComponentAlignment(FlexComponent.Alignment.CENTER, back, usernametext, passwordtext, buttonlayout);
         textlayout.add(usernametext, passwordtext, buttonlayout);
         this.setContent(textlayout);
 
-        back.addClickListener(buttonClickEvent -> UI.getCurrent().navigate(com.example.InternshipProject.View.LoginView.class));
+        back.addClickListener(buttonClickEvent -> UI.getCurrent().navigate(LoginView.class));
 
     }
 
