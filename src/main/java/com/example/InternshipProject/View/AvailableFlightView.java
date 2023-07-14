@@ -33,7 +33,7 @@ FlightController flightController ;
         economoy.getStyle().set("position","relative");
         economoy.getStyle().set("font-size","30px");
 
-        H1 flightinfo = new H1(flightController.findAircraft(SelectPortsView.selectdeparture.getValue())+" "
+        H1 flightinfo = new H1(flightController.findAircraft(SelectPortsView.selectarrival.getValue())+" "
                 + SelectPortsView.selectdeparture.getValue()+"-"+SelectPortsView.selectarrival.getValue()
                 + " "+SelectPortsView.datePicker.getValue());
 
