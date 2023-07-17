@@ -1,6 +1,6 @@
 package com.example.InternshipProject.Repository;
 
-import com.example.InternshipProject.Model.User;
+import com.example.InternshipProject.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

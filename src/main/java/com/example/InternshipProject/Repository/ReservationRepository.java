@@ -1,6 +1,6 @@
 package com.example.InternshipProject.Repository;
 
-import com.example.InternshipProject.Model.Reservation;
+import com.example.InternshipProject.Entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

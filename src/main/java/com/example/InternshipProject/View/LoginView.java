@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@Route(value = "/login")
+@Route(value = "")
     @PageTitle("Login")
 
     public class LoginView extends AppLayout {

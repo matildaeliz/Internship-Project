@@ -6,6 +6,9 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLink;
+import org.hibernate.validator.constraints.CodePointLength;
+import org.springframework.stereotype.Component;
+
 
 public class MainLayoutView extends AppLayout {
 

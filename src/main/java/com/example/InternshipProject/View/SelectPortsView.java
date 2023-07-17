@@ -62,7 +62,7 @@ public class SelectPortsView extends MainLayoutView {
       adultcount.setItems("0","1","2","3","4","5");
       childcount.setLabel("Child Count");
       childcount.setItems("0","1","2","3","4","5");
-      infantcount.setLabel("Child Count");
+      infantcount.setLabel("Infant Count");
       infantcount.setItems("0","1","2","3","4","5");
       adultcount.setRequiredIndicatorVisible(true);
       childcount.setRequiredIndicatorVisible(true);
@@ -82,7 +82,6 @@ public class SelectPortsView extends MainLayoutView {
           Notification notification = Notification.show("All fields must be filled");
           notification.addThemeVariants(NotificationVariant.LUMO_WARNING);
       }else {
-          UserController.rezervation(radioGroup.getValue(),selectdeparture.getValue(),selectarrival.getValue(),datePicker.getValue(),Integer.parseInt(adultcount.getValue()),Integer.parseInt(childcount.getValue()),Integer.parseInt(infantcount.getValue()));
           UI.getCurrent().navigate(AvailableFlightView.class);
       }
   }

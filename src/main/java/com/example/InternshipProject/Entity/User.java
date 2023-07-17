@@ -1,4 +1,4 @@
-package com.example.InternshipProject.Model;
+package com.example.InternshipProject.Entity;
 
 import jakarta.persistence.*;
 

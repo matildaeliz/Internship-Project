@@ -1,7 +1,6 @@
-package com.example.InternshipProject.Model;
+package com.example.InternshipProject.Entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 
 @Entity
@@ -11,6 +10,8 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int reservationid;
+    @Column
+    private String pnr;
     @Column
     private String rezervistname;
     @Column
@@ -27,8 +28,9 @@ public class Reservation {
     private int infantcount;
     @Column
     private String flighttype;
-
-    public Reservation(String rezervistname, String departureport, String arrivalport, String departuredate, int adultcount, int childcount, int infantcount, String flighttype) {
+    @Column
+    private String price;
+    public Reservation(String rezervistname, String departureport, String arrivalport, String departuredate, int adultcount, int childcount, int infantcount, String flighttype,String price, String pnr) {
 
         this.rezervistname = rezervistname;
         this.departureport = departureport;
@@ -38,6 +40,8 @@ public class Reservation {
         this.childcount = childcount;
         this.infantcount = infantcount;
         this.flighttype = flighttype;
+        this.price = price;
+        this.pnr = pnr;
     }
 
     public Reservation(){}

@@ -1,10 +1,6 @@
-package com.example.InternshipProject.Model;
+package com.example.InternshipProject.Entity;
 
-import com.example.InternshipProject.Repository.FlightRepository;
-import com.example.InternshipProject.Repository.ReservationRepository;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.LogManager;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name="flightinfo")

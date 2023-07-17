@@ -1,10 +1,8 @@
 package com.example.InternshipProject.Service;
 
-import com.example.InternshipProject.Model.Reservation;
-import com.example.InternshipProject.Model.User;
+import com.example.InternshipProject.Entity.User;
 import com.example.InternshipProject.Repository.ReservationRepository;
 import com.example.InternshipProject.Repository.UserRepository;
-import com.example.InternshipProject.View.AvailableFlightView;
 import com.example.InternshipProject.View.SelectPortsView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.notification.Notification;
@@ -47,10 +45,8 @@ public class UserService {
        }
     }
 
-    public void reservation(String username, String radio , String departure, String arrival, String date, int adult, int child,int infant){
-    Reservation reservation = new Reservation(username,departure,arrival,date,adult,child,infant,radio);
-    reservationRepository.save(reservation);
-    }
+
+
 
 
 
