@@ -13,4 +13,7 @@ public interface FlightRepository extends JpaRepository<Flight, String> {
           @Query("SELECT flight.distance FROM Flight flight WHERE flight.arrivalport=:arrivalport")
           int getDistance(@Param("arrivalport") String arrivalport);
 
+
+         @Query("SELECT flight.aircraft  FROM Reservation reservation JOIN Flight flight ON  flight.arrivalport = reservation.arrivalport where  reservation.pnr=:pnr")
+         String findAircraftByPNR(@Param("pnr") String pnr);
 }

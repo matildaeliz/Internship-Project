@@ -3,6 +3,9 @@ package com.example.InternshipProject.Service;
 import com.example.InternshipProject.Entity.User;
 import com.example.InternshipProject.Repository.ReservationRepository;
 import com.example.InternshipProject.Repository.UserRepository;
+import com.example.InternshipProject.View.LoginView;
+import com.example.InternshipProject.View.PnrSearchView;
+import com.example.InternshipProject.View.ReservationInfoView;
 import com.example.InternshipProject.View.SelectPortsView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.notification.Notification;
@@ -33,21 +36,29 @@ public class UserService {
             notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
             userRepository.save(user);
         }
+
     }
 
 
     public void authorization(String username, String password){
        if(userRepository.authorization(username) == null || !userRepository.authorization(username).equals(password)){
-           Notification notification = Notification.show("Wrong Username or Password");
+           Notification notification = Notification.show("Wrong PNR Number");
            notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
        }else{
-           UI.getCurrent().navigate(SelectPortsView.class);
+           if(reservationRepository.isReserved(username) != null){
+                PnrSearchView.pnrfield = null;
+                 UI.getCurrent().navigate(ReservationInfoView.class);
+           }else {
+               UI.getCurrent().navigate(SelectPortsView.class);
+           }
+
+
+
        }
     }
 
-
-
-
-
+    public void deleteUser(String username){
+        userRepository.deleteUser(username);
+    }
 
 }

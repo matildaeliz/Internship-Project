@@ -21,4 +21,8 @@ public class FlightController {
     public String findAircraft(String arrivalport){
        return flightService.findAircraft(arrivalport);
     }
+
+    public String findAircraftByPnr(String pnr){
+        return flightService.findAircraftbyPNR(pnr);
+    }
 }

@@ -24,25 +24,22 @@ import java.util.Random;
 @PageTitle("Available Flight")
 @Route("/availableflight")
 
-public class AvailableFlightView extends  MainLayoutView{
+public class AvailableFlightView extends  MainLayoutView implements ViewInterface{
 
    @Autowired
   FlightController flightController;
-   @Autowired
-   ReservationController reservationController;
-   @Autowired
-    UserController userController;
+
 
 
   public static  RadioButtonGroup<String> priceGroup;
 
+  public static String PNR;
 
 
-
-    public AvailableFlightView(FlightController service,ReservationController rescontrol){
-        super();
+    public AvailableFlightView(FlightController service,ReservationController rescontrol,UserController userController){
+        super(userController,rescontrol);
         this.flightController = service;
-        this.reservationController = rescontrol;
+        PNR = generatePNR(5);
 
         H1 business = new H1("Business");
         business.getStyle().set("top","-375px");
@@ -79,14 +76,13 @@ public class AvailableFlightView extends  MainLayoutView{
         Div infobox = new Div();
         infobox.getStyle().set("position","relative");
         infobox.getStyle().set("font-size","3px");
-        infobox.setWidth("300px");
-        infobox.setHeight("30px");
         infobox.getStyle().set("border", "1px solid black");
         infobox.getStyle().set("background-color", "PaleGoldenRod");
         infobox.getStyle().set("border-radius", "12rem 12rem 0 0");
         infobox.getStyle().set("left","100px");
         infobox.getStyle().set("top","10.5px");
-
+        infobox.setWidth("300px");
+        infobox.setHeight("30px");
 
 
 
@@ -158,7 +154,7 @@ public class AvailableFlightView extends  MainLayoutView{
     }
 
 
-    void control(){
+    public void control(){
         if(priceGroup.isEmpty()){
             Notification notification = Notification.show("Select a class");
             notification.addThemeVariants(NotificationVariant.LUMO_WARNING);
@@ -168,12 +164,12 @@ public class AvailableFlightView extends  MainLayoutView{
                    SelectPortsView.selectarrival.getValue() , String.valueOf(SelectPortsView.datePicker.getValue()),
                   Integer.parseInt(SelectPortsView.adultcount.getValue()) , Integer.parseInt(SelectPortsView.childcount.getValue()),
                    Integer.parseInt(SelectPortsView.infantcount.getValue()), SelectPortsView.radioGroup.getValue(),
-                  String.valueOf(priceGroup.getValue()) ,generatePNR(5));
+                  String.valueOf(priceGroup.getValue()) ,PNR);
            UI.getCurrent().navigate(PassengerinfoView.class);
         }
     }
 
-    public String generatePNR(int length){
+    public static String generatePNR(int length){
         final String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         final String NUMBERS = "0123456789";
 
@@ -195,4 +191,8 @@ public class AvailableFlightView extends  MainLayoutView{
             return sb.toString();
         }
 
+
+    public String  getPNR(){
+        return PNR;
+    }
 }

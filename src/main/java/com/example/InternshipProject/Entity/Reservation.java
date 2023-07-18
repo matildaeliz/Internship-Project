@@ -30,6 +30,8 @@ public class Reservation {
     private String flighttype;
     @Column
     private String price;
+    @Column
+    private String Status = "UNTICKETED";
     public Reservation(String rezervistname, String departureport, String arrivalport, String departuredate, int adultcount, int childcount, int infantcount, String flighttype,String price, String pnr) {
 
         this.rezervistname = rezervistname;

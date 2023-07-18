@@ -1,9 +1,12 @@
 package com.example.InternshipProject.View;
 
 import com.example.InternshipProject.Controller.UserController;
+import com.example.InternshipProject.Entity.User;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -18,9 +21,12 @@ import org.springframework.stereotype.Component;
 @Route(value = "/signup")
 
 @PageTitle("Sign up")
-public class SignUpView extends AppLayout {
+public class SignUpView extends AppLayout  {
     @Autowired
     UserController userController;
+
+    TextField usernametext;
+    TextField passwordtext;
     public SignUpView() {
 
         VerticalLayout textlayout = new VerticalLayout();
@@ -28,7 +34,7 @@ public class SignUpView extends AppLayout {
 
         TextField usernametext = new TextField("Username");
         TextField passwordtext = new TextField(("Password"));
-        Button signup = new Button("Sign up", event -> userController.registerUser(usernametext.getValue(), passwordtext.getValue()));
+        Button signup = new Button("Sign up", event -> control(usernametext,passwordtext));
         Button back = new Button("Back");
         buttonlayout.add(signup, back);
         textlayout.setHorizontalComponentAlignment(FlexComponent.Alignment.CENTER, back, usernametext, passwordtext, buttonlayout);
@@ -39,5 +45,16 @@ public class SignUpView extends AppLayout {
 
     }
 
+
+
+    public void control(TextField usernametext, TextField passwordtext) {
+        if(usernametext.getValue().isEmpty()|| passwordtext.getValue().isEmpty()){
+
+            Notification notification = Notification.show("Username or Password cannot be empty");
+            notification.addThemeVariants(NotificationVariant.LUMO_WARNING);
+
+        }else
+            userController.registerUser(usernametext.getValue(),passwordtext.getValue());
+    }
 
 }

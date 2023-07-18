@@ -21,6 +21,10 @@ public int getDistance(String arrivalport){
         return flightRepository.findAircraft(arrivalport);
     }
 
+    public String findAircraftbyPNR(String pnr){
+    return flightRepository.findAircraftByPNR(pnr);
+    }
+
     public int calculatingprice(int distance, int adult, int child, int infant){
         int price = 0;
 

@@ -12,16 +12,10 @@ public class UserController {
 @Autowired
    UserService Userservice;
 
- public String username;
+    public String username;
 
 
-public  void registerUser(String username, String password){
-if(username.isBlank() || password.isBlank()){
-
-    Notification notification = Notification.show("Username or Password cannot be empty");
-notification.addThemeVariants(NotificationVariant.LUMO_WARNING);
-
-}else
+public void registerUser(String username, String password){
     Userservice.registerUser(new User(username,password));
 }
 
@@ -30,11 +24,17 @@ public void authorization(String username, String password){
         Notification notification = Notification.show("Username or Password cannot be empty");
         notification.addThemeVariants(NotificationVariant.LUMO_WARNING);
     }else {
-       this.username = username;
+        this.username = username;
         Userservice.authorization(username,password);
 
  }
-}
 
+}
+public void deleteUser(String username){
+
+        Userservice.deleteUser(username);
+
+
+}
 
 }

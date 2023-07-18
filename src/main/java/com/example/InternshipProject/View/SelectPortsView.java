@@ -1,6 +1,8 @@
 package com.example.InternshipProject.View;
 
+import com.example.InternshipProject.Controller.ReservationController;
 import com.example.InternshipProject.Controller.UserController;
+import com.example.InternshipProject.Entity.User;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
@@ -17,17 +19,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @PageTitle("Reservation | RMS")
 @Route(value = "/selectports")
-public class SelectPortsView extends MainLayoutView {
-    @Autowired
-    public UserController UserController ;
+public class SelectPortsView extends MainLayoutView  implements  ViewInterface{
+
 
    public static  RadioButtonGroup<String> radioGroup ;
     public static DatePicker datePicker;
     public static Select<String>  adultcount,childcount,infantcount,selectdeparture,selectarrival;
 
 
-    public SelectPortsView(){
-      super();
+    public SelectPortsView(UserController userController, ReservationController reservationController){
+      super(userController,reservationController);
+
+
       HorizontalLayout horizontalLayout=new HorizontalLayout();
       VerticalLayout layout = new VerticalLayout();
       radioGroup = new RadioButtonGroup<>();
@@ -44,7 +47,7 @@ public class SelectPortsView extends MainLayoutView {
       selectdeparture.setItems("IST");
       selectdeparture.setPlaceholder("Select Departure Port");
       selectarrival.setLabel("Arrival Port");
-      selectarrival.setItems("WAS", "BAK", "DHM", "PAR","ESS"," ROM");
+      selectarrival.setItems("WAS", "BAK", "DHM", "PAR","ESS","ROM");
       selectarrival.setPlaceholder("Select Arrival Port");
       selectdeparture.setRequiredIndicatorVisible(true);
       selectarrival.setRequiredIndicatorVisible(true);
@@ -77,7 +80,7 @@ public class SelectPortsView extends MainLayoutView {
 
   }
 
-  void control(){
+  public void control(){
       if(radioGroup.isEmpty() || datePicker.isEmpty()|| selectarrival.isEmpty() || selectdeparture.isEmpty() || adultcount .isEmpty()|| childcount.isEmpty() || infantcount.isEmpty()){
           Notification notification = Notification.show("All fields must be filled");
           notification.addThemeVariants(NotificationVariant.LUMO_WARNING);

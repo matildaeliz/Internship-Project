@@ -4,6 +4,7 @@ import com.example.InternshipProject.Controller.UserController;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -17,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@Route(value = "")
+@Route(value = "/login")
     @PageTitle("Login")
 
     public class LoginView extends AppLayout {
@@ -25,8 +26,8 @@ import org.springframework.stereotype.Component;
         @Autowired
         public  UserController UserController ;
 
-
-        public LoginView() {
+         public static TextField username;
+    public LoginView() {
             VerticalLayout textlayout = new VerticalLayout();
             HorizontalLayout buttonlayout = new HorizontalLayout();
             Image icon = new Image("META-INF/resources/images/icon.png", "ICON");
@@ -35,6 +36,7 @@ import org.springframework.stereotype.Component;
             PasswordField password = new PasswordField(("Password"));
             Button login = new Button("Login" , event -> UserController.authorization(username.getValue(),password.getValue()));
             Button signup = new Button("Sign up");
+
 
 
             buttonlayout.add(login, signup);
