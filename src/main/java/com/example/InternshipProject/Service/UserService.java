@@ -42,7 +42,7 @@ public class UserService {
 
     public void authorization(String username, String password){
        if(userRepository.authorization(username) == null || !userRepository.authorization(username).equals(password)){
-           Notification notification = Notification.show("Wrong PNR Number");
+           Notification notification = Notification.show("Wrong Username or Password");
            notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
        }else{
            if(reservationRepository.isReserved(username) != null){

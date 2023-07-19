@@ -94,7 +94,7 @@ public class ReservationInfoView extends MainLayoutView{
        else if (reservationController.findPNR(userController.username) != PnrSearchView.pnrfield.getValue()){
            PNR.setText("PNR NUMBER: "+ PnrSearchView.pnrfield.getValue() );
             passengerinfos.setText(reservationController.getAdultInfo(PnrSearchView.pnrfield.getValue()));
-            flightinfo.setText(flightController.findAircraftByPnr(PnrSearchView.pnrfield.getValue())+" "
+            flightinfos.setText(flightController.findAircraftByPnr(PnrSearchView.pnrfield.getValue())+" "
                     + reservationController.findFlightDatebyPNR(PnrSearchView.pnrfield.getValue()) + " "+
                     reservationController.findDepartureandArrivalPortbyPNR(PnrSearchView.pnrfield.getValue()));
         }
