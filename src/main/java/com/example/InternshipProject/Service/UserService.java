@@ -46,7 +46,7 @@ public class UserService {
            notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
        }else{
            if(reservationRepository.isReserved(username) != null){
-                PnrSearchView.pnrfield = null;
+                 PnrSearchView.pnrfield = null;
                  UI.getCurrent().navigate(ReservationInfoView.class);
            }else {
                UI.getCurrent().navigate(SelectPortsView.class);

@@ -126,7 +126,7 @@ public class PaymentView extends MainLayoutView implements  ViewInterface{
             notification.addThemeVariants(NotificationVariant.LUMO_WARNING);
         }else {
             reservationController.setStatus(AvailableFlightView.PNR);
-
+            PnrSearchView.pnrfield = null;
             UI.getCurrent().navigate(ReservationInfoView.class);
         }
     }

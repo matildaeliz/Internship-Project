@@ -88,10 +88,11 @@ public class ReservationInfoView extends MainLayoutView{
         OK.addClickListener(buttonClickEvent -> cancelreservation());
         maindiv.add(PNR,flightinfo,passengerinfo);
 
-        if(PnrSearchView.pnrfield == null){
+        if(PnrSearchView.pnrfield == null ){
             maindiv.add(OK);
         }
        else if (reservationController.findPNR(userController.username) != PnrSearchView.pnrfield.getValue()){
+           PNR.setText("PNR NUMBER: "+ PnrSearchView.pnrfield.getValue() );
             passengerinfos.setText(reservationController.getAdultInfo(PnrSearchView.pnrfield.getValue()));
             flightinfo.setText(flightController.findAircraftByPnr(PnrSearchView.pnrfield.getValue())+" "
                     + reservationController.findFlightDatebyPNR(PnrSearchView.pnrfield.getValue()) + " "+
@@ -107,7 +108,9 @@ public class ReservationInfoView extends MainLayoutView{
 
     public void cancelreservation(){
         reservationController.cancelReservation(userController.username);
-
         UI.getCurrent().navigate(SelectPortsView.class);
     }
+
+
+
 }
