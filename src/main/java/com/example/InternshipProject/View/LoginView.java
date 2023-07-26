@@ -14,10 +14,12 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.spring.annotation.SpringComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@Component
+@SpringComponent
 @Route(value = "/login")
     @PageTitle("Login")
 
@@ -48,6 +50,8 @@ import org.springframework.stereotype.Component;
 
             signup.addClickListener(buttonClickEvent -> UI.getCurrent().navigate(SignUpView.class));
         }
+
+
     }
 
 

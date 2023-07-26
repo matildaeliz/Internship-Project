@@ -32,7 +32,7 @@ public interface ReservationRepository extends JpaRepository<Reservation,String>
 
     @Query("SELECT reservation.departuredate FROM Reservation reservation WHERE reservation.pnr =:pnr")
     String getFlightDatebyPNR(@Param("pnr")String pnr);
-   @Query("SELECT reservation.departureport FROM Reservation reservation WHERE  reservation.pnr=:pnr")
+    @Query("SELECT reservation.departureport FROM Reservation reservation WHERE  reservation.pnr=:pnr")
     String getDeparturePortbyPNR(@Param("pnr") String pnr);
     @Query("SELECT reservation.arrivalport FROM Reservation reservation WHERE  reservation.pnr=:pnr")
     String getArrivalPortbyPNR(@Param("pnr") String pnr);

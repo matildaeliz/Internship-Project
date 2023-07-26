@@ -6,6 +6,7 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserController {
@@ -36,5 +37,8 @@ public void deleteUser(String username){
 
 
 }
-
+    @GetMapping("/login")
+    public String hello(){
+        return "Merhaba";
+    }
 }
